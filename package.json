@@ -1,0 +1,31 @@
+{
+    "name": "cdn-api",
+    "version": "1.0.0-pre",
+    "description": "",
+    "main": "./dist/index.js",
+    "type": "module",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "packageManager": "pnpm@10.12.4",
+    "scripts": {
+        "dev": "tsx src/index.ts",
+        "build": "tsc",
+        "prepack": "pnpm run build",
+        "start": "node .",
+        "generate-openapi": "tsx tools/generate-openapi.ts",
+        "clean": "rimraf dist openapi.json"
+    },
+    "dependencies": {
+        "@ts-rest/core": "^3.52.1",
+        "@ts-rest/open-api": "^3.52.1",
+        "zod": "^3.22.3"
+    },
+    "devDependencies": {
+        "@types/node": "^24.1.0",
+        "prettier": "^3.6.2",
+        "rimraf": "^6.0.1",
+        "tsx": "^4.20.3",
+        "typescript": "^5.8.3"
+    }
+}
