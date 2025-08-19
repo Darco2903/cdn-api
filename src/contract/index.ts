@@ -1,9 +1,22 @@
 import { initContract } from "@ts-rest/core";
+import auth from "./auth.js";
+import endpoint from "./endpoint.js";
+import list from "./list.js";
+import record from "./record.js";
+import stats from "./stats.js";
+import upload from "./upload.js";
 
 const c = initContract();
 
 export default c.router(
-    {},
+    {
+        ...auth,
+        // ...endpoint,
+        ...list,
+        // ...record,
+        // ...stats,
+        // ...upload,
+    },
     {
         pathPrefix: "/api/v2",
     }
