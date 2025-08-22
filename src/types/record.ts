@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { EndpointSchema } from "./endpoint";
+import { EndpointSchema } from "./endpoint.js";
 
 export const RecordPublicSchema = z.object({
     filename: z.string(),
