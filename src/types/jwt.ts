@@ -19,6 +19,8 @@ export const cdnAssetTokenDataSchema = z.object({
     service: z.literal("auth"),
     endpoint: z.string(),
     user_public_id: userIdSchema,
+    file_size_max: z.number().min(0).optional(),
+    allowed_file_types: z.array(z.string()).optional(),
     callback_url: z.string().url().optional(),
 });
 

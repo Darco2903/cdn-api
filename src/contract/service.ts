@@ -14,7 +14,7 @@ export default c.router({
         body: z.object({}),
         responses: {
             200: apiSuccess(z.null()),
-            400: apiError(z.literal("BAD_REQUEST"), z.literal("Missing file")),
+            400: apiError(z.literal("BAD_REQUEST"), z.string()),
             401: apiError(
                 z.literal("UNAUTHORIZED"),
                 z.literal("Invalid CDN token")
