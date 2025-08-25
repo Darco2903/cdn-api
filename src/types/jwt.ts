@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { userIdSchema } from "./user.js";
-import { endpointPathSchema } from "./endpoint.js";
+import { authAssetTypeSchema, authServiceSchema } from "auth-api";
 
 const JWTData = z.object({
     iat: z.number(),
@@ -16,7 +16,8 @@ export const cdnAssetHeaderSchema = z.object({
 });
 
 export const cdnAssetTokenDataSchema = z.object({
-    service: z.literal("auth"),
+    service: authServiceSchema,
+    type: z.literal("avatar"),
     endpoint: z.string(),
     user_public_id: userIdSchema,
     file_size_max: z.number().min(0).optional(),
@@ -41,7 +42,10 @@ export const cdnFeedbackHeaderSchema = z.object({
 });
 
 export const cdnFeedbackTokenDataSchema = z.object({
+    service: authServiceSchema,
+    type: authAssetTypeSchema,
     endpoint: z.string(),
+    user_public_id: userIdSchema,
 });
 
 export const cdnFeedbackTokenDecodedSchema = z.intersection(

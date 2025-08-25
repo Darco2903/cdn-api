@@ -1,5 +1,4 @@
 import { initContract } from "@ts-rest/core";
-import auth from "./auth.js";
 import endpoint from "./endpoint.js";
 import key from "./key.js";
 import list from "./list.js";
@@ -12,7 +11,6 @@ const c = initContract();
 
 export default c.router(
     {
-        // ...auth,
         // ...endpoint,
         ...key,
         ...list,

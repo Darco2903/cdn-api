@@ -27,6 +27,9 @@ importers:
       '@types/node':
         specifier: ^24.1.0
         version: 24.1.0
+      auth-api:
+        specifier: link:..\auth-api
+        version: link:../auth-api
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
