@@ -1,18 +1,19 @@
 import { z } from "zod";
-import { EndpointSchema } from "./endpoint.js";
+import { endpointPublicSchema, endpointSchema } from "./endpoint.js";
 
-export const RecordPublicSchema = z.object({
+export const recordPublicSchema = z.object({
+    storage_id: z.string(),
     filename: z.string(),
     // size: z.bigint().min(0n),
     size: z.string().regex(/^\d+$/), // Store as string to avoid bigint issues in JSON
     type: z.string(),
-    endpoints: z.array(EndpointSchema),
+    endpoints: z.array(endpointPublicSchema),
 });
 
-export type RecordPublic = z.infer<typeof RecordPublicSchema>;
+export type RecordPublic = z.infer<typeof recordPublicSchema>;
 
-export const RecordSchema = RecordPublicSchema.extend({
-    storage_id: z.string(),
+export const recordSchema = recordPublicSchema.extend({
+    endpoints: z.array(endpointSchema),
     role: z.number().int().min(-1).max(255),
     user_id: z.string(),
     visible: z.boolean(),
@@ -21,4 +22,4 @@ export const RecordSchema = RecordPublicSchema.extend({
     updated_at: z.date(),
 });
 
-export type Record = z.infer<typeof RecordSchema>;
+export type Record = z.infer<typeof recordSchema>;
