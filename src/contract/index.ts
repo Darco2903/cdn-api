@@ -13,10 +13,10 @@ export default c.router(
     {
         // ...endpoint,
         ...key,
-        ...list,
+        list,
         // ...record,
         service,
-        // ...stats,
+        stats,
         // ...upload,
     },
     {

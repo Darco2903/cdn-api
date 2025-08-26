@@ -7,15 +7,22 @@ const c = initContract();
 export default c.router({
     endpointCreate: {
         method: "POST",
-        path: "/endpoint/:storage_id",
-        body: z.null(),
+        path: "/endpoint",
+        body: z.object({
+            storage_id: z.string().nonempty(),
+            endpoint: z.string().nonempty(),
+        }),
         responses: {
             200: apiSuccess(z.null()),
         },
     },
     endpointDelete: {
         method: "DELETE",
-        path: "/endpoint/:endpoint_id",
+        path: "/endpoint",
+        body: z.object({
+            // storage_id: z.string().nonempty(),
+            endpoint: z.string().nonempty(),
+        }),
         responses: {
             200: apiSuccess(z.null()),
         },

@@ -1,13 +1,13 @@
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
+import { authHeaderSchema } from "auth-api";
 import { apiError, apiSuccess } from "../types.js";
-import { authHeaderSchema } from "../types/creds.js";
 import { recordSchema, recordPublicSchema } from "../types/record.js";
 
 const c = initContract();
 
 export default c.router({
-    list: {
+    public: {
         method: "GET",
         path: "/list",
         headers: authHeaderSchema,
@@ -16,7 +16,7 @@ export default c.router({
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
-    listAdmin: {
+    admin: {
         method: "GET",
         path: "/list/admin",
         headers: authHeaderSchema,
