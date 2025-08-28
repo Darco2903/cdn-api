@@ -11,10 +11,10 @@ const c = initContract();
 
 export default c.router(
     {
-        // ...endpoint,
+        // endpoint,
         ...key,
         list,
-        // ...record,
+        record,
         service,
         stats,
         // ...upload,
