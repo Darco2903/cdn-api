@@ -1,7 +1,7 @@
-import { initContract, ZodErrorSchema } from "@ts-rest/core";
+import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import { apiError, apiSuccess } from "../types.js";
-import { authHeaderSchema } from "auth-api";
+import { authHeaderSchema } from "auth-api/client";
 
 const c = initContract();
 

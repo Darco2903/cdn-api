@@ -1,6 +1,6 @@
 import { initContract } from "@ts-rest/core";
 import { z } from "zod";
-import { authHeaderSchema } from "auth-api";
+import { authHeaderSchema } from "auth-api/client";
 import { apiError, apiSuccess } from "../types.js";
 import { recordSchema, recordPublicSchema } from "../types/record.js";
 

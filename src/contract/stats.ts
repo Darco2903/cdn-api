@@ -1,8 +1,7 @@
-import { initContract, ZodErrorSchema } from "@ts-rest/core";
+import { initContract } from "@ts-rest/core";
 import { z } from "zod";
 import { apiError, apiSuccess } from "../types.js";
 import { statsGlobalSchema } from "../types/stats.js";
-// import { authHeaderSchema } from "auth-api";
 
 const c = initContract();
 
@@ -30,13 +29,7 @@ export default c.router({
     //     path: "/stats/:public_id",
     //     headers: authHeaderSchema,
     //     responses: {
-    //         200: apiSuccess(
-    //             z.object({
-    //                 record_count: z.number().int().nonnegative(),
-    //                 total_size: z.number().int().nonnegative(),
-    //                 max_size: z.number().int().nonnegative(),
-    //             })
-    //         ),
+    //         200: apiSuccess(statsGlobalSchema),
     //         500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
     //     },
     // },
