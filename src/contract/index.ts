@@ -13,7 +13,7 @@ const c = initContract();
 export default c.router(
     {
         auth,
-        // endpoint,
+        endpoint,
         ...key,
         list,
         record,
