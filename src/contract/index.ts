@@ -19,7 +19,7 @@ export default c.router(
         record,
         service,
         stats,
-        // ...upload,
+        upload,
     },
     {
         pathPrefix: "/api/v2",
