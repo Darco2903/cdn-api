@@ -26,65 +26,32 @@ export default c.router({
         method: "POST",
         path: "/record/:storage_id",
         headers: authHeaderSchema,
-        body:
-            // z
-            //     .object({
-            //         filename: z.string().max(128),
-            //         role: z.number().gte(0).optional(),
-            //         active: z.boolean().optional(),
-            //         visible: z.boolean().optional(),
-            //     })
-            //     .or(
-            //         z.object({
-            //             filename: z.string().max(128).optional(),
-            //             role: z.number().gte(0),
-            //             active: z.boolean().optional(),
-            //             visible: z.boolean().optional(),
-            //         })
-            //     )
-            //     .or(
-            //         z.object({
-            //             filename: z.string().max(128).optional(),
-            //             role: z.number().gte(0).optional(),
-            //             active: z.boolean(),
-            //             visible: z.boolean().optional(),
-            //         })
-            //     )
-            //     .or(
-            //         z.object({
-            //             filename: z.string().max(128).optional(),
-            //             role: z.number().gte(0).optional(),
-            //             active: z.boolean().optional(),
-            //             visible: z.boolean(),
-            //         })
-            //     ),
-
-            z.union([
-                z.object({
-                    filename: z.string().max(128),
-                    role: z.number().gte(0).optional(),
-                    active: z.boolean().optional(),
-                    visible: z.boolean().optional(),
-                }),
-                z.object({
-                    filename: z.string().max(128).optional(),
-                    role: z.number().gte(0),
-                    active: z.boolean().optional(),
-                    visible: z.boolean().optional(),
-                }),
-                z.object({
-                    filename: z.string().max(128).optional(),
-                    role: z.number().gte(0).optional(),
-                    active: z.boolean(),
-                    visible: z.boolean().optional(),
-                }),
-                z.object({
-                    filename: z.string().max(128).optional(),
-                    role: z.number().gte(0).optional(),
-                    active: z.boolean().optional(),
-                    visible: z.boolean(),
-                }),
-            ]),
+        body: z.union([
+            z.object({
+                filename: z.string().max(128),
+                role: z.number().gte(0).optional(),
+                active: z.boolean().optional(),
+                visible: z.boolean().optional(),
+            }),
+            z.object({
+                filename: z.string().max(128).optional(),
+                role: z.number().gte(0),
+                active: z.boolean().optional(),
+                visible: z.boolean().optional(),
+            }),
+            z.object({
+                filename: z.string().max(128).optional(),
+                role: z.number().gte(0).optional(),
+                active: z.boolean(),
+                visible: z.boolean().optional(),
+            }),
+            z.object({
+                filename: z.string().max(128).optional(),
+                role: z.number().gte(0).optional(),
+                active: z.boolean().optional(),
+                visible: z.boolean(),
+            }),
+        ]),
         responses: {
             200: apiSuccess(z.null()),
             400: ZodErrorSchema,

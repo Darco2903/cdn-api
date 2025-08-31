@@ -3,6 +3,7 @@ import { z } from "zod";
 import { apiError, apiSuccess } from "../types.js";
 import { authHeaderSchema } from "auth-api/client";
 import { jsonStringAs } from "../types/data.js";
+import { uploadInitSchema } from "../types/upload.js";
 
 const c = initContract();
 
@@ -37,20 +38,13 @@ export default c.router({
     uploadInit: {
         method: "POST",
         path: "/upload/init",
-        contentType: "multipart/form-data",
-        body: z.object({
-            file: z.any(),
-            data: jsonStringAs(
+        body: uploadInitSchema,
+        responses: {
+            200: apiSuccess(
                 z.object({
-                    filename: z.string().min(3).max(100),
-                    role: z.number().int().min(0).max(255),
-                    visible: z.boolean(),
-                    active: z.boolean(),
+                    uploadId: z.string(),
                 })
             ),
-        }),
-        responses: {
-            200: apiSuccess(z.null()),
             400: z.union([
                 ZodErrorSchema,
                 apiError(z.literal("BAD_REQUEST"), z.string()),
@@ -62,7 +56,7 @@ export default c.router({
     },
     uploadPart: {
         method: "POST",
-        path: "/upload/part/:storage_id/:part",
+        path: "/upload/part/:upload_id/:part",
         contentType: "multipart/form-data",
         body: z.object({
             file: z.any(),
@@ -76,13 +70,13 @@ export default c.router({
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             404: apiError(z.literal("NOT_FOUND"), z.string()),
+            409: apiError(z.literal("CONFLICT"), z.string()),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
     uploadEnd: {
         method: "POST",
-        path: "/upload/end/:storage_id",
-        contentType: "multipart/form-data",
+        path: "/upload/end/:upload_id",
         body: z.undefined(),
         responses: {
             200: apiSuccess(z.null()),
