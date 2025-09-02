@@ -6,6 +6,7 @@ export const uploadInitSchema = z.object({
     visible: z.boolean(),
     active: z.boolean(),
     size: z.number().int().min(1),
+    mimeType: z.string().min(3).max(100),
     parts: z.number().int().min(1),
 });
 
