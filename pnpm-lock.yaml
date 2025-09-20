@@ -22,8 +22,8 @@ importers:
         specifier: ^24.1.0
         version: 24.1.0
       auth-api:
-        specifier: file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz
-        version: file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz(@types/node@24.1.0)
+        specifier: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz
+        version: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz(@types/node@24.1.0)
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -249,8 +249,8 @@ packages:
     resolution: {integrity: sha512-bN798gFfQX+viw3R7yrGWRqnrN2oRkEkUjjl4JNn4E8GxxbjtG3FbrEIIY3l8/hrwUwIeCZvi4QuOTP4MErVug==}
     engines: {node: '>=12'}
 
-  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz:
-    resolution: {integrity: sha512-Vp4SA6xE4GwK/Iuwa373zsViOnAy8pChYgrO+Cu6SjGYtMI/SuuR+oOwj6wCL4CFXxrfysXBkLPyUdv0rHsUJQ==, tarball: file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz}
+  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz:
+    resolution: {integrity: sha512-pz1DeTFsCaVhGMJqlAvKZUtkR7PPo+Snt7DzlW9VDEap6Wahw8YuqAucnFWas/LQ4PqegBYMPh6o7SW0xo6OvQ==, tarball: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz}
     version: 2.0.0-pre
 
   buffer-equal-constant-time@1.0.1:
@@ -585,7 +585,7 @@ snapshots:
 
   ansi-styles@6.2.1: {}
 
-  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz(@types/node@24.1.0):
+  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz(@types/node@24.1.0):
     dependencies:
       '@ts-rest/core': 3.52.1(@types/node@24.1.0)(zod@3.25.76)
       '@ts-rest/open-api': 3.52.1(@ts-rest/core@3.52.1(@types/node@24.1.0)(zod@3.25.76))(zod@3.25.76)

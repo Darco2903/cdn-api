@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "@types/node": "^24.1.0",
-        "auth-api": "file:../../npm_packs/content/auth-api-2.0.0-pre-1.tgz",
+        "auth-api": "file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz",
         "prettier": "^3.6.2",
         "rimraf": "^6.0.1",
         "tsx": "^4.20.3",
