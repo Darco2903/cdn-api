@@ -3,7 +3,7 @@ import { z } from "zod";
 import { apiError, apiSuccess } from "../types.js";
 import { authHeaderSchema } from "auth-api/client";
 import { jsonStringAs } from "../types/data.js";
-import { uploadInitSchema } from "../types/upload.js";
+import { uploadDataSchema, uploadInitSchema } from "../types/upload.js";
 
 const c = initContract();
 
@@ -15,14 +15,7 @@ export default c.router({
         contentType: "multipart/form-data",
         body: z.object({
             file: z.any(),
-            data: jsonStringAs(
-                z.object({
-                    filename: z.string().min(3).max(100),
-                    role: z.number().int().min(0).max(255),
-                    visible: z.boolean(),
-                    active: z.boolean(),
-                })
-            ),
+            data: jsonStringAs(uploadDataSchema),
         }),
         responses: {
             200: apiSuccess(z.null()),
