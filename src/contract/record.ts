@@ -7,7 +7,7 @@ import { recordSchema } from "../types/record.js";
 const c = initContract();
 
 export default c.router({
-    recordGet: {
+    get: {
         method: "GET",
         path: "/record/:storage_id",
         headers: authHeaderSchema,
@@ -22,7 +22,7 @@ export default c.router({
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
-    recordUpdate: {
+    update: {
         method: "POST",
         path: "/record/:storage_id",
         headers: authHeaderSchema,
@@ -64,7 +64,7 @@ export default c.router({
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
-    recordDelete: {
+    delete: {
         method: "DELETE",
         path: "/record/:storage_id",
         headers: authHeaderSchema,
