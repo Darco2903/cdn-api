@@ -18,8 +18,8 @@ export const recordSchema = recordPublicSchema.extend({
     type: z.enum(["service", "system", "user"]),
     visible: z.boolean(),
     active: z.boolean(),
-    created_at: z.date(),
-    updated_at: z.date(),
+    created_at: z.coerce.date(),
+    updated_at: z.coerce.date(),
 });
 
 export type Record = z.infer<typeof recordSchema>;

@@ -12,8 +12,8 @@ export const endpointPublicSchema = z.object({
 export type EndpointPublic = z.infer<typeof endpointPublicSchema>;
 
 export const endpointSchema = endpointPublicSchema.extend({
-    created_at: z.date(),
-    updated_at: z.date(),
+    created_at: z.coerce.date(),
+    updated_at: z.coerce.date(),
 });
 
 export type Endpoint = z.infer<typeof endpointSchema>;
