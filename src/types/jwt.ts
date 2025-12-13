@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { userIdSchema } from "./user.js";
-import { authAssetTypeSchema, authServiceSchema } from "auth-api/client";
+import { authAssetTypeSchema, authServiceSchema } from "@darco2903/auth-api/client";
 
 const JWTData = z.object({
     iat: z.number(),

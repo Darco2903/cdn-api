@@ -1,5 +1,5 @@
 {
-    "name": "cdn-api",
+    "name": "@darco2903/cdn-api",
     "version": "1.0.0-pre",
     "description": "",
     "main": "./dist/index.js",
@@ -7,16 +7,20 @@
     "keywords": [],
     "author": "",
     "license": "ISC",
-    "packageManager": "pnpm@10.18.3",
+    "packageManager": "pnpm@10.25.0",
+    "publishConfig": {
+        "registry": "https://npm.pkg.github.com"
+    },
     "scripts": {
         "dev": "tsx src/index.ts",
         "build": "tsc",
         "prepack": "pnpm run build",
         "start": "node .",
         "generate-openapi": "tsx tools/generate-openapi.ts",
-        "clean": "rimraf dist openapi.json"
+        "clean": "rimraf -g dist darco2903-cdn-api-*.tgz openapi.json"
     },
     "dependencies": {
+        "@darco2903/auth-api": "^2.0.0",
         "@ts-rest/core": "^3.52.1",
         "@ts-rest/open-api": "^3.52.1",
         "axios": "^1.12.2",
@@ -24,7 +28,6 @@
     },
     "devDependencies": {
         "@types/node": "^24.8.1",
-        "auth-api": "file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz",
         "prettier": "^3.6.2",
         "rimraf": "^6.0.1",
         "tsx": "^4.20.6",

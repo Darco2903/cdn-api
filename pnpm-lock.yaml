@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@darco2903/auth-api':
+        specifier: ^2.0.0
+        version: 2.0.0(@types/node@24.8.1)
       '@ts-rest/core':
         specifier: ^3.52.1
         version: 3.52.1(@types/node@24.8.1)(zod@3.25.76)
@@ -24,9 +27,6 @@ importers:
       '@types/node':
         specifier: ^24.8.1
         version: 24.8.1
-      auth-api:
-        specifier: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz
-        version: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz(@types/node@24.8.1)
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -47,6 +47,9 @@ packages:
     peerDependencies:
       openapi3-ts: ^2.0.0 || ^3.0.0
       zod: ^3.20.0
+
+  '@darco2903/auth-api@2.0.0':
+    resolution: {integrity: sha512-uAiabGoPezN0YxkLJCsBmxl/3QuYJ5c15HY8iEqstzeGt0cFwyHHEGulJRc7Bgasgc4P9XFCcN03ju5EYoEfIw==, tarball: https://npm.pkg.github.com/download/@darco2903/auth-api/2.0.0/a184e103b6e07c4ec8f0640d6f3a9b0ae896d81b}
 
   '@esbuild/aix-ppc64@0.25.11':
     resolution: {integrity: sha512-Xt1dOL13m8u0WE8iplx9Ibbm+hFAO0GsU2P34UNoDGvZYkY8ifSiy6Zuc1lYxfG7svWE2fzqCUmFp5HCn51gJg==}
@@ -255,10 +258,6 @@ packages:
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz:
-    resolution: {integrity: sha512-pz1DeTFsCaVhGMJqlAvKZUtkR7PPo+Snt7DzlW9VDEap6Wahw8YuqAucnFWas/LQ4PqegBYMPh6o7SW0xo6OvQ==, tarball: file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz}
-    version: 2.0.0-pre
-
   axios@1.12.2:
     resolution: {integrity: sha512-vMJzPewAlRyOgxV2dU0Cuz2O8zzzx9VYtbJOaBgXFeLc4IV/Eg50n4LowmehOOR61S8ZMpc2K5Sa7g6A4jfkUw==}
 
@@ -393,15 +392,15 @@ packages:
     resolution: {integrity: sha512-zptv57P3GpL+O0I7VdMJNBZCu+BPHVQUk55Ft8/QCJjTVxrnJHuVuX/0Bl2A6/+2oyR/ZMEuFKwmzqqZ/U5nPQ==}
     engines: {node: 20 || >=22}
 
-  jsonwebtoken@9.0.2:
-    resolution: {integrity: sha512-PRp66vJ865SSqOlgqS8hujT5U4AOgMfhrwYIuIhfKaoSCZcirrmASQr8CX7cUg+RMih+hgznrjp99o+W4pJLHQ==}
+  jsonwebtoken@9.0.3:
+    resolution: {integrity: sha512-MT/xP0CrubFRNLNKvxJ2BYfy53Zkm++5bX9dtuPbqAeQpTVe0MQTFhao8+Cp//EmJp244xt6Drw/GVEGCUj40g==}
     engines: {node: '>=12', npm: '>=6'}
 
-  jwa@1.4.2:
-    resolution: {integrity: sha512-eeH5JO+21J78qMvTIDdBXidBd6nG2kZjg5Ohz/1fpa28Z4CcsWUzJ1ZZyFq/3z3N17aZy+ZuBoHljASbL1WfOw==}
+  jwa@2.0.1:
+    resolution: {integrity: sha512-hRF04fqJIP8Abbkq5NKGN0Bbr3JxlQ+qhZufXVr0DvujKy93ZCbXZMHDL4EOtodSbCWxOqR8MS1tXA5hwqCXDg==}
 
-  jws@3.2.2:
-    resolution: {integrity: sha512-YHlZCB6lMTllWDtSPHz/ZXTsi8S00usEV6v1tjq8tOUZzw7DpSDWVXjXDre6ed1w/pd495ODpHZYSdkRTsa0HA==}
+  jws@4.0.1:
+    resolution: {integrity: sha512-EKI/M/yqPncGUUh44xz0PxSidXFr/+r0pA70+gIYhjv+et7yxM+s29Y+VGDkovRofQem0fs7Uvf4+YmAdyRduA==}
 
   lodash.includes@4.3.0:
     resolution: {integrity: sha512-W3Bx6mdkRTGtlJISOvVD/lbqjTlPPUDTMnlXZFnVwi9NKJ6tiAk6LVdlhZMm17VZisqhKcgzpO5Wz91PCt5b0w==}
@@ -562,6 +561,15 @@ snapshots:
       ts-deepmerge: 6.2.1
       zod: 3.25.76
 
+  '@darco2903/auth-api@2.0.0(@types/node@24.8.1)':
+    dependencies:
+      '@ts-rest/core': 3.52.1(@types/node@24.8.1)(zod@3.25.76)
+      '@ts-rest/open-api': 3.52.1(@ts-rest/core@3.52.1(@types/node@24.8.1)(zod@3.25.76))(zod@3.25.76)
+      jsonwebtoken: 9.0.3
+      zod: 3.25.76
+    transitivePeerDependencies:
+      - '@types/node'
+
   '@esbuild/aix-ppc64@0.25.11':
     optional: true
 
@@ -682,15 +690,6 @@ snapshots:
   ansi-styles@6.2.3: {}
 
   asynckit@0.4.0: {}
-
-  auth-api@file:../../npm_packs/content/auth-api-2.0.0-pre-2.tgz(@types/node@24.8.1):
-    dependencies:
-      '@ts-rest/core': 3.52.1(@types/node@24.8.1)(zod@3.25.76)
-      '@ts-rest/open-api': 3.52.1(@ts-rest/core@3.52.1(@types/node@24.8.1)(zod@3.25.76))(zod@3.25.76)
-      jsonwebtoken: 9.0.2
-      zod: 3.25.76
-    transitivePeerDependencies:
-      - '@types/node'
 
   axios@1.12.2:
     dependencies:
@@ -856,9 +855,9 @@ snapshots:
     dependencies:
       '@isaacs/cliui': 8.0.2
 
-  jsonwebtoken@9.0.2:
+  jsonwebtoken@9.0.3:
     dependencies:
-      jws: 3.2.2
+      jws: 4.0.1
       lodash.includes: 4.3.0
       lodash.isboolean: 3.0.3
       lodash.isinteger: 4.0.4
@@ -869,15 +868,15 @@ snapshots:
       ms: 2.1.3
       semver: 7.7.3
 
-  jwa@1.4.2:
+  jwa@2.0.1:
     dependencies:
       buffer-equal-constant-time: 1.0.1
       ecdsa-sig-formatter: 1.0.11
       safe-buffer: 5.2.1
 
-  jws@3.2.2:
+  jws@4.0.1:
     dependencies:
-      jwa: 1.4.2
+      jwa: 2.0.1
       safe-buffer: 5.2.1
 
   lodash.includes@4.3.0: {}
