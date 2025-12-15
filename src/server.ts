@@ -1,5 +1,5 @@
 export * from "./common.js";
-import { type JwtPayload, verify } from "jsonwebtoken";
+import jwt, { type JwtPayload } from "jsonwebtoken";
 
 export async function JWTVerify(
     token: string,
@@ -12,7 +12,7 @@ export async function JWTVerify(
     }
 
     return new Promise(async (resolve) => {
-        verify(token, pubKey, (err, decoded) => {
+        jwt.verify(token, pubKey, (err, decoded) => {
             resolve(err ? undefined : decoded);
         });
     });
