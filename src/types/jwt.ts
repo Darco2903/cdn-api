@@ -1,6 +1,21 @@
 import { z } from "zod";
 import { userIdSchema } from "./user.js";
-import { authAssetTypeSchema, authServiceSchema } from "@darco2903/auth-api/client";
+import { authAssetTypeSchema, authServiceSchema } from "@darco2903/auth-api";
+
+export type JWTVerifyError = {
+    name:
+        | "TokenExpiredError"
+        | "JsonWebTokenError"
+        | "NotBeforeError"
+        | "InvalidToken"
+        | "InvalidTokenData";
+    message: string;
+};
+
+export type JWTSignError = {
+    name: "InvalidTokenData" | "JsonWebTokenError";
+    message: string;
+};
 
 const JWTData = z.object({
     iat: z.number(),
