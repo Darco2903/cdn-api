@@ -113,6 +113,6 @@ jobs:
 
       - name: Publish to GitHub Packages
         shell: bash
-        run: pnpm publish --access public --no-git-checks
+        run: pnpm publish --tag next --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
