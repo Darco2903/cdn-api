@@ -113,6 +113,11 @@ jobs:
 
       - name: Publish to GitHub Packages
         shell: bash
-        run: pnpm publish --tag next --access public --no-git-checks
+        run: |
+          if [[ "$VERSION" == *"-"* ]]; then
+            pnpm publish --tag next --access public --no-git-checks
+          else
+            pnpm publish --access public --no-git-checks
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
