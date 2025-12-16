@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { userIdSchema } from "./user.js";
-import { authAssetTypeSchema, authServiceSchema } from "@darco2903/auth-api";
+import {
+    authAssetTypeSchema,
+    authServiceSchema,
+} from "@darco2903/auth-api/client";
 
 export type JWTVerifyError = {
     name:
