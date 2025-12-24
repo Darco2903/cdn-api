@@ -1,4 +1,4 @@
-import { z } from "zod";
+import z from "zod";
 
 export const statsGlobalSchema = z.object({
     record_count: z.number().int().gte(0),

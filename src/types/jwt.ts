@@ -1,9 +1,10 @@
-import { z } from "zod";
-import { userIdSchema } from "./user.js";
+import z from "zod";
 import {
     authAssetTypeSchema,
     authServiceSchema,
+    userPublicIdSchema,
 } from "@darco2903/auth-api/client";
+import { endpointPathSchema } from "./endpoint.js";
 
 export type JWTVerifyError = {
     name:
@@ -36,8 +37,8 @@ export const cdnAssetHeaderSchema = z.object({
 export const cdnAssetTokenDataSchema = z.object({
     service: authServiceSchema,
     type: z.literal("avatar"),
-    endpoint: z.string(),
-    user_public_id: userIdSchema,
+    endpoint: endpointPathSchema,
+    user_public_id: userPublicIdSchema,
     file_size_max: z.number().min(0).optional(),
     allowed_file_types: z.array(z.string()).optional(),
     callback_url: z.string().url().optional(),
@@ -62,8 +63,8 @@ export const cdnFeedbackHeaderSchema = z.object({
 export const cdnFeedbackTokenDataSchema = z.object({
     service: authServiceSchema,
     type: authAssetTypeSchema,
-    endpoint: z.string(),
-    user_public_id: userIdSchema,
+    endpoint: endpointPathSchema,
+    user_public_id: userPublicIdSchema,
 });
 
 export const cdnFeedbackTokenDecodedSchema = z.intersection(

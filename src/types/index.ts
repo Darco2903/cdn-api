@@ -1,3 +1,4 @@
+export * from "./creds.js";
 export * from "./endpoint.js";
 export * from "./jwt.js";
 export * from "./record.js";

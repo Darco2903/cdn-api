@@ -1,12 +1,10 @@
+import type { Socket as ClientSocket } from "socket.io-client";
+import type { Socket as ServerSocket } from "socket.io";
 import {
-    SocketClientToServerTemplate,
-    SocketServerToClientTemplate,
-} from "./template.js";
+    CdnClientToServerEvents as ClientToServer,
+    CdnServerToClientEvents as ServerToClient,
+} from "./interface/index.js";
 
-export interface ClientToServerEvents
-    //
-    extends SocketClientToServerTemplate {}
+export type CdnClientSocket = ClientSocket<ServerToClient, ClientToServer>;
 
-export interface ServerToClientEvents
-    //
-    extends SocketServerToClientTemplate {}
+export type CdnServerSocket = ServerSocket<ClientToServer, ServerToClient>;

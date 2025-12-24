@@ -1,4 +1,4 @@
-import { z } from "zod";
+import z from "zod";
 
 export const uploadDataSchema = z.object({
     filename: z.string().min(3).max(100),

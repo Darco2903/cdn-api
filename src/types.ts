@@ -1,4 +1,4 @@
-import { z, ZodType } from "zod";
+import { z, type ZodType } from "zod";
 
 export const apiSuccess = <T>(schema: ZodType<T>) => schema;
 
@@ -20,3 +20,19 @@ export const apiErrorData = <T, U, V>(
         name: z.literal("APIError"),
         data,
     });
+
+export function jsonStringAs<T extends z.ZodTypeAny>(
+    schema: T
+): z.ZodEffects<z.ZodString, z.infer<T>> {
+    return z.string().transform((str, ctx) => {
+        try {
+            return schema.parse(JSON.parse(str));
+        } catch {
+            ctx.addIssue({
+                code: z.ZodIssueCode.custom,
+                message: "Invalid JSON",
+            });
+            return z.NEVER;
+        }
+    });
+}

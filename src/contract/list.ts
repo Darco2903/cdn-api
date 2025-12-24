@@ -1,8 +1,8 @@
 import { initContract } from "@ts-rest/core";
-import { z } from "zod";
+import z from "zod";
 import { authHeaderSchema } from "@darco2903/auth-api/client";
 import { apiError, apiSuccess } from "../types.js";
-import { recordSchema, recordPublicSchema } from "../types/record.js";
+import { recordSchema, recordPublicSchema } from "../types/index.js";
 
 const c = initContract();
 

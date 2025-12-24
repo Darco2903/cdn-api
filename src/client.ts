@@ -1,11 +1,8 @@
 export * from "./common.js";
-import { io, Socket } from "socket.io-client";
+import io from "socket.io-client";
 import { initClient } from "@ts-rest/core";
 import contract from "./contract/index.js";
-import type {
-    ClientToServerEvents,
-    ServerToClientEvents,
-} from "./socket/index.js";
+import type { CdnClientSocket } from "./socket/index.js";
 
 export function createClient(origin: string) {
     return initClient(contract, {
@@ -14,8 +11,8 @@ export function createClient(origin: string) {
     });
 }
 
-export function createSocket(origin: string) {
+export function createSocket(origin: string): CdnClientSocket {
     return io(origin, {
         autoConnect: true,
-    }) as Socket<ServerToClientEvents, ClientToServerEvents>;
+    });
 }

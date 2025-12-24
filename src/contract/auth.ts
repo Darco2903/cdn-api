@@ -1,7 +1,7 @@
 import { initContract } from "@ts-rest/core";
-import { z } from "zod";
-import { apiError, apiSuccess } from "../types.js";
+import z from "zod";
 import { authHeaderSchema } from "@darco2903/auth-api/client";
+import { apiError, apiSuccess } from "../types.js";
 
 const c = initContract();
 

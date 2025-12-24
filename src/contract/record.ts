@@ -1,8 +1,8 @@
 import { initContract, ZodErrorSchema } from "@ts-rest/core";
-import { z } from "zod";
-import { apiError, apiSuccess } from "../types.js";
+import z from "zod";
 import { authHeaderSchema } from "@darco2903/auth-api/client";
-import { recordSchema } from "../types/record.js";
+import { apiError, apiSuccess } from "../types.js";
+import { recordSchema } from "../types/index.js";
 
 const c = initContract();
 
