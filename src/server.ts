@@ -1,6 +1,7 @@
 export * from "./common.js";
 import jwt from "jsonwebtoken";
-import { type Result, err, ok } from "neverthrow";
+import { ResultAsync } from "neverthrow";
+import type { Time } from "@darco2903/secondthought";
 import {
     cdnAssetTokenDataDecodedSchema,
     type JWTVerifyError,
@@ -8,69 +9,81 @@ import {
     type CdnAssetTokenDataDecoded,
     type JWTSignError,
 } from "./common.js";
+import { JWT_ALGORITHM } from "./consts.js";
 
-export async function JWTVerify(
+export function JWTVerify(
     token: string,
     pubKey: string
-): Promise<Result<CdnAssetTokenDataDecoded, JWTVerifyError>> {
-    return new Promise((resolve) => {
-        jwt.verify(token, pubKey, { algorithms: ["RS256"] }, (e, decoded) => {
-            if (e) {
-                resolve(
-                    err({
-                        name: e.name as JWTVerifyError["name"],
-                        message: e.message,
-                    } satisfies JWTVerifyError)
-                );
-            } else if (decoded === undefined) {
-                resolve(
-                    err({
-                        name: "InvalidToken",
-                        message: "Token is undefined",
-                    } satisfies JWTVerifyError)
-                );
-            } else {
-                const res = cdnAssetTokenDataDecodedSchema.safeParse(decoded);
-                if (res.success) {
-                    resolve(ok(res.data));
-                } else {
-                    resolve(
-                        err({
-                            name: "InvalidTokenData",
-                            message: "Invalid token data",
-                        } satisfies JWTVerifyError)
-                    );
+): ResultAsync<CdnAssetTokenDataDecoded, JWTVerifyError> {
+    return ResultAsync.fromPromise(
+        new Promise((resolve, reject) => {
+            jwt.verify(
+                token,
+                pubKey,
+                { algorithms: [JWT_ALGORITHM] },
+                (e, decoded) => {
+                    if (e) {
+                        reject({
+                            name: e.name as JWTVerifyError["name"],
+                            message: e.message,
+                        } satisfies JWTVerifyError);
+                    } else if (decoded === undefined) {
+                        reject({
+                            name: "InvalidToken",
+                            message: "Token is undefined",
+                        } satisfies JWTVerifyError);
+                    } else {
+                        const res =
+                            cdnAssetTokenDataDecodedSchema.safeParse(decoded);
+                        if (res.success) {
+                            resolve(res.data);
+                        } else {
+                            reject({
+                                name: "InvalidTokenData",
+                                message: "Invalid token data",
+                            } satisfies JWTVerifyError);
+                        }
+                    }
                 }
-            }
-        });
-    });
+            );
+        }),
+        (e) => e as JWTVerifyError
+    );
 }
 
-export async function JWTSign(
+/**
+ * Sign a JWT token with the given payload and private key, with the specified expiration time.
+ * @param expiresIn Expiration time in seconds or a Time object.
+ */
+export function JWTSign(
     payload: CdnFeedbackTokenData,
     privKey: string,
-    expiresIn: number
-): Promise<Result<string, JWTSignError>> {
-    return new Promise((resolve) => {
-        jwt.sign(
-            payload,
-            privKey,
-            {
-                algorithm: "RS256",
-                expiresIn: expiresIn,
-            },
-            (e, token) => {
-                if (e || token === undefined) {
-                    resolve(
-                        err({
+    expiresIn: number | Time
+): ResultAsync<string, JWTSignError> {
+    const expiresInSec =
+        typeof expiresIn === "number" ? expiresIn : expiresIn.toSecond().time;
+
+    return ResultAsync.fromPromise(
+        new Promise((resolve, reject) => {
+            jwt.sign(
+                payload,
+                privKey,
+                {
+                    algorithm: JWT_ALGORITHM,
+                    expiresIn: expiresInSec,
+                },
+                (e, token) => {
+                    if (e || token === undefined) {
+                        reject({
                             name: "JsonWebTokenError",
                             message: e?.message ?? "Failed to sign token",
-                        })
-                    );
-                } else {
-                    resolve(ok(token));
+                        } satisfies JWTSignError);
+                    } else {
+                        resolve(token);
+                    }
                 }
-            }
-        );
-    });
+            );
+        }),
+        (e) => e as JWTSignError
+    );
 }
