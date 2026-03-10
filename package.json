@@ -27,7 +27,7 @@
         "generate:openapi": "tsx tools/generate-openapi.ts"
     },
     "dependencies": {
-        "@darco2903/auth-api": "2.0.3-pre.0",
+        "@darco2903/auth-api": "2.1.0",
         "@ts-rest/core": "^3.52.1",
         "@ts-rest/open-api": "^3.52.1",
         "axios": "^1.12.2",
