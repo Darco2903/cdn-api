@@ -52,7 +52,6 @@ export default class Uploader {
                     visible,
                     active,
                     size: file.size,
-                    mimeType: file.type,
                     parts,
                 },
             });
