@@ -17,7 +17,7 @@ export default c.router({
             data: jsonStringAs(uploadDataSchema),
         }),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: z.union([
                 ZodErrorSchema,
                 apiError(z.literal("BAD_REQUEST"), z.string()),
@@ -54,7 +54,7 @@ export default c.router({
             file: z.any(),
         }),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: z.union([
                 ZodErrorSchema,
                 apiError(z.literal("BAD_REQUEST"), z.string()),
@@ -71,7 +71,7 @@ export default c.router({
         path: "/upload/end/:upload_id",
         body: z.undefined(),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: ZodErrorSchema,
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
