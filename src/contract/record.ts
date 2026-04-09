@@ -53,7 +53,7 @@ export default c.router({
             }),
         ]),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: ZodErrorSchema,
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
@@ -69,7 +69,7 @@ export default c.router({
         path: "/record/:storage_id",
         headers: authHeaderSchema,
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             404: apiError(

@@ -16,7 +16,7 @@ export default c.router({
             endpoint: endpointPathSchema,
         }),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: ZodErrorSchema,
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
@@ -39,7 +39,7 @@ export default c.router({
             endpoint: endpointPathSchema,
         }),
         responses: {
-            200: apiSuccess(z.null()),
+            204: apiSuccess(z.undefined()),
             400: ZodErrorSchema,
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
