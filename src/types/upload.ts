@@ -11,7 +11,7 @@ export type UploadData = z.infer<typeof uploadDataSchema>;
 
 export const uploadInitSchema = uploadDataSchema.extend({
     size: z.number().int().min(1),
-    mimeType: z.string().min(3).max(100),
+    mimeType: z.string().max(100),
     parts: z.number().int().min(1),
 });
 
