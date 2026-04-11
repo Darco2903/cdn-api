@@ -17,7 +17,13 @@ export default c.router({
         }),
         responses: {
             204: apiSuccess(z.undefined()),
-            400: ZodErrorSchema,
+            400: z.union([
+                ZodErrorSchema,
+                apiError(
+                    z.literal("BAD_REQUEST"),
+                    z.literal("Endpoint path is invalid")
+                ),
+            ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             404: apiError(
