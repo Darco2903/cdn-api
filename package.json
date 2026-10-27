@@ -7,7 +7,7 @@
     "keywords": [],
     "author": "Darco2903",
     "license": "ISC",
-    "packageManager": "pnpm@10.33.0",
+    "packageManager": "pnpm@12.15.0",
     "repository": {
         "url": "https://github.com/Darco2903/cdn-api.git"
     },
@@ -22,7 +22,7 @@
     "scripts": {
         "build": "tsc",
         "prepack": "pnpm run build",
-        "test": "vitest",
+        "test": "vitest run",
         "clean": "rimraf -g dist darco2903-cdn-api-*.tgz openapi.json",
         "generate:openapi": "tsx tools/generate-openapi.ts"
     },
