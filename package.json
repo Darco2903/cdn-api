@@ -1,26 +1,42 @@
 {
     "name": "@darco2903/cdn-api",
     "version": "1.2.0",
-    "description": "",
-    "main": "./dist/index.js",
-    "type": "module",
-    "keywords": [],
     "author": "Darco2903",
+    "description": "",
+    "keywords": [],
     "license": "ISC",
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "type": "module",
     "packageManager": "pnpm@12.15.0",
     "repository": {
+        "type": "git",
         "url": "https://github.com/Darco2903/cdn-api.git"
     },
+    "homepage": "https://github.com/Darco2903/rt-stream#readme",
     "publishConfig": {
         "access": "public"
     },
     "exports": {
-        ".": "./dist/index.js",
-        "./client": "./dist/client.js",
-        "./server": "./dist/server.js"
+        ".": {
+            "default": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        },
+        "./client": {
+            "default": "./dist/client.js",
+            "types": "./dist/client.d.ts"
+        },
+        "./server": {
+            "default": "./dist/server.js",
+            "types": "./dist/server.d.ts"
+        }
     },
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "build": "tsc",
+        "check": "tsc --noEmit",
         "prepack": "pnpm run build",
         "test": "vitest run",
         "clean": "rimraf -g dist darco2903-cdn-api-*.tgz openapi.json",
