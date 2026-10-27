@@ -11,12 +11,18 @@ export default c.router({
         path: "/service/asset",
         headers: cdnHeaderSchema,
         contentType: "multipart/form-data",
-        body: c.noBody(),
+        body: z.object({ file: z.any() }),
         responses: {
             204: c.noBody(),
             400: apiError(z.literal("BAD_REQUEST"), z.string()),
-            401: apiError(z.literal("UNAUTHORIZED"), z.literal("Invalid CDN token")),
-            409: apiError(z.literal("CONFLICT"), z.literal("Endpoint is used by another record")),
+            401: apiError(
+                z.literal("UNAUTHORIZED"),
+                z.literal("Invalid CDN token")
+            ),
+            409: apiError(
+                z.literal("CONFLICT"),
+                z.literal("Endpoint is used by another record")
+            ),
             429: apiError(z.literal("TOO_MANY_REQUESTS"), z.string()),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
@@ -28,8 +34,14 @@ export default c.router({
         responses: {
             204: c.noBody(),
             400: ZodErrorSchema,
-            401: apiError(z.literal("UNAUTHORIZED"), z.literal("Invalid CDN token")),
-            404: apiError(z.literal("NOT_FOUND"), z.literal("Service asset not found")),
+            401: apiError(
+                z.literal("UNAUTHORIZED"),
+                z.literal("Invalid CDN token")
+            ),
+            404: apiError(
+                z.literal("NOT_FOUND"),
+                z.literal("Service asset not found")
+            ),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },

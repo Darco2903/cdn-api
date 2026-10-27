@@ -18,7 +18,10 @@ export default c.router({
         }),
         responses: {
             204: c.noBody(),
-            400: z.union([ZodErrorSchema, apiError(z.literal("BAD_REQUEST"), z.string())]),
+            400: z.union([
+                ZodErrorSchema,
+                apiError(z.literal("BAD_REQUEST"), z.string()),
+            ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
@@ -32,9 +35,12 @@ export default c.router({
             200: apiSuccess(
                 z.object({
                     uploadId: z.string(),
-                }),
+                })
             ),
-            400: z.union([ZodErrorSchema, apiError(z.literal("BAD_REQUEST"), z.string())]),
+            400: z.union([
+                ZodErrorSchema,
+                apiError(z.literal("BAD_REQUEST"), z.string()),
+            ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             429: apiError(z.literal("TOO_MANY_REQUESTS"), z.string()),
@@ -50,7 +56,10 @@ export default c.router({
         }),
         responses: {
             204: c.noBody(),
-            400: z.union([ZodErrorSchema, apiError(z.literal("BAD_REQUEST"), z.string())]),
+            400: z.union([
+                ZodErrorSchema,
+                apiError(z.literal("BAD_REQUEST"), z.string()),
+            ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             404: apiError(z.literal("NOT_FOUND"), z.string()),
@@ -64,7 +73,10 @@ export default c.router({
         body: c.noBody(),
         responses: {
             204: c.noBody(),
-            400: z.union([ZodErrorSchema, apiError(z.literal("BAD_REQUEST"), z.string())]),
+            400: z.union([
+                ZodErrorSchema,
+                apiError(z.literal("BAD_REQUEST"), z.string()),
+            ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
             404: apiError(z.literal("NOT_FOUND"), z.string()),
