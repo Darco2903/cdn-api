@@ -14,7 +14,7 @@ export default c.router({
             200: apiSuccess(
                 z.object({
                     access: z.boolean(),
-                })
+                }),
             ),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
