@@ -15,10 +15,7 @@ export default c.router({
             200: apiSuccess(recordSchema),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
-            404: apiError(
-                z.literal("NOT_FOUND"),
-                z.literal("Record not found")
-            ),
+            404: apiError(z.literal("NOT_FOUND"), z.literal("Record not found")),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
@@ -53,14 +50,11 @@ export default c.router({
             }),
         ]),
         responses: {
-            204: apiSuccess(z.undefined()),
+            204: c.noBody(),
             400: ZodErrorSchema,
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
-            404: apiError(
-                z.literal("NOT_FOUND"),
-                z.literal("Record not found")
-            ),
+            404: apiError(z.literal("NOT_FOUND"), z.literal("Record not found")),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
@@ -69,13 +63,10 @@ export default c.router({
         path: "/record/:storage_id",
         headers: authHeaderSchema,
         responses: {
-            204: apiSuccess(z.undefined()),
+            204: c.noBody(),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
             403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
-            404: apiError(
-                z.literal("NOT_FOUND"),
-                z.literal("Record not found")
-            ),
+            404: apiError(z.literal("NOT_FOUND"), z.literal("Record not found")),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
     },
