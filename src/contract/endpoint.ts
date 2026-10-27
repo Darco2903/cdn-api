@@ -25,7 +25,13 @@ export default c.router({
                 ),
             ]),
             401: apiError(z.literal("UNAUTHORIZED"), z.literal("Unauthorized")),
-            403: apiError(z.literal("FORBIDDEN"), z.literal("Forbidden")),
+            403: apiError(
+                z.literal("FORBIDDEN"),
+                z.union([
+                    z.literal("Forbidden"),
+                    z.literal("Endpoint limit reached"),
+                ])
+            ),
             404: apiError(
                 z.literal("NOT_FOUND"),
                 z.literal("Record not found")

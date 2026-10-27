@@ -19,6 +19,10 @@ export default c.router({
                 z.literal("UNAUTHORIZED"),
                 z.literal("Invalid CDN token")
             ),
+            409: apiError(
+                z.literal("CONFLICT"),
+                z.literal("Endpoint is used by another record")
+            ),
             429: apiError(z.literal("TOO_MANY_REQUESTS"), z.string()),
             500: apiError(z.literal("INTERNAL_SERVER_ERROR"), z.string()),
         },
